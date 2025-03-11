@@ -1,25 +1,65 @@
-/*
- * Description:
- * Lab 2 - Partner 18 group - A program to check if a string is a palindrome.
- * @Author William Callahan & Gabe Salinas-Carter
- * @since March 4, 2025
+import java.util.Scanner;
+
+/**
+ * Lab 2
+ * Description: this program will convert the first character in a string from lower to upper case
+ * @Author Gabe Salinas-Carter & William Callahan
+ * @Since 3/6/25
  */
 
-import java.io.*;
-
 public class Antics {
-    public static boolean isPalindrome(String s) {
+    public static boolean isPangram(String s) {
+        boolean[] mark = new boolean[26];
+        boolean pangram = true;
+        int index = 0;
 
-        // Convert string to lowercase and store as variable 's'
-        s = s.toLowerCase();
+        for (int i = 0; i < s.length(); i++) {
 
-        // Reverse the string character by character & store as variable 'rev'
-        String rev = "";
-        for (int i = s.length() - 1; i >= 0; i--) {
-            rev = rev + s.charAt(i);
+            char cur = s.charAt(i);
+
+            if (cur >= 'A' && cur <= 'Z') {
+                index = cur - 'A';
+            } else if (cur >= 'a' && cur <= 'z') {
+                index = cur - 'a';
+            }
+
+            mark[index] = true;
         }
 
-        return s.equals(rev);
-        System.out.println("Hello, World!");
+        for (int i = 0; i < mark.length; i++) {
+            if (mark[i] == false) {
+                pangram = false;
+            }
+        }
+        if (pangram) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Please enter a pangram: ");
+            String input = scanner.nextLine();
+
+            if (isPangram(input)) {
+                System.out.println("True");
+                break;
+            } else {
+                System.out.println("False");
+            }
+        }
+    }
+
+    //Method to capitalize first letter in String
+    public static String capitalizeFirstLetter(String input) {
+
+        //checks to see if first character is lower case, returns upper case if so
+        if (Character.isLowerCase(input.charAt(0)))
+            return input.substring(0, 1).toUpperCase() + input.substring(1);
+        else
+            return ("The word you entered begins with an upper case letter please try again");
     }
 }
