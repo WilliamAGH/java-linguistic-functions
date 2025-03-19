@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 /**
- * Lab 2
+ * Lab 2, Partner/Group 18
  * Description: This program checks for palindromes, abecedarian words,
- * pangrams, and capitalizes the first letter of a word.
+ * pangrams, and capitalizes the first letter of a word
  * 
  * @author Gabe Salinas-Carter (isPangram, capitalizeFirstLetter)
  * @author William Callahan (isPalindrome, isAbecedarian)
